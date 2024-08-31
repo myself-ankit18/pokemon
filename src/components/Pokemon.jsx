@@ -1,0 +1,61 @@
+import { useEffect, useState } from "react";
+import { PokemonCards } from "./PokemonCards";
+
+export const Pokemon = () => {
+  const [pokemon, setPokemon] = useState([]);
+  const [loading,setLoading] = useState(true);
+  const [error,setError] = useState(null);
+  const [search,setSearch] = useState("");
+  const API = "https://pokeapi.co/api/v2/pokemon?limit=200";
+  const fetchPokemon = async () => {
+    try {
+      const res = await fetch(API);
+      const data = await res.json();
+      const details = data.results.map(async (curPokemon) => {
+        const res = await fetch(curPokemon.url);
+        const data = res.json();
+        return data;
+      });
+
+      const detailedResponse = await Promise.all(details);
+      console.log(detailedResponse);
+      setPokemon(detailedResponse);
+      setLoading(false);
+    } catch (error) {
+      console.log(error);
+      setLoading(false);
+      setError(error);
+    }
+  };
+
+  useEffect(() => {
+    fetchPokemon();
+  }, []);
+
+  const searchData = pokemon.filter((curPokemon) => curPokemon.name.toUpperCase().includes(search.toUpperCase()))
+
+  if(loading){
+    return <h1 className="font-bold text-[40px] font-mono text-center">Loading</h1>
+  }
+  if(error){
+    return <h1 className="font-bold text-[40px] font-mono text-center">{error.message}</h1>
+  }
+
+  return (
+    <section className="bg-blue-100">
+      <div className="flex flex-col justify-center items-center">
+        <h1 className="font-bold text-[40px] font-mono">Pokemon Cards</h1>
+        <input type="search" name="" id="" placeholder="Search" value={search} onChange={(e)=> setSearch(e.target.value)} className="p-1 m-3 sm:w-[15rem] outline-none border-b-2 border-black" />
+      </div>
+      <ul className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 place-content-center gap-6 m-2">
+        {searchData.map((curPokemon) => {
+          return (
+            <>
+              <PokemonCards key={curPokemon.id} pokemonDetails={curPokemon} />
+            </>
+          );
+        })}
+      </ul>
+    </section>
+  );
+};
