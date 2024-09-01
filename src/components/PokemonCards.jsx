@@ -13,7 +13,7 @@ export const PokemonCards = (props) => {
         <div className="px-4 py-1 bg-green-500 rounded-2xl text-white font-semibold m-3">
           {props.pokemonDetails.types.map((curType) => curType.type.name).join(", ").toUpperCase()}
         </div>
-        <div className="text-[10px] flex flex-col items-center">
+        <div className="text-[11px] flex flex-col items-center">
           <div className="flex m-2 gap-2">
             <span className="w-16 pl-2">
               <span className="font-bold">Height:</span>{" "}
@@ -38,8 +38,8 @@ export const PokemonCards = (props) => {
               {props.pokemonDetails.stats[1].base_stat}
             </span>
             <span className="w-16">
-              <span className="font-bold">Ability:</span>{" "}
-              {props.pokemonDetails.abilities[0].ability.name}
+              <span className="font-bold">Defense:</span>{" "}
+              {props.pokemonDetails.stats[2].base_stat}
             </span>
           </div>
         </div>

@@ -62,12 +62,12 @@ export const Pokemon = () => {
 
   return (
     <section className="bg-blue-100">
-      <div className="flex flex-col justify-center items-center">
+      <div className="flex flex-col items-center fixed bg-blue-100 w-[100vw] shadow-lg">
         <h1 className="font-bold text-[40px] font-mono">Pokemon Cards</h1>
         <div className="flex flex-col justify-center">
           <label htmlFor="types">Search by:</label>
 
-          <select
+          <select className="outline-none"
             name="types"
             id="types"
             value={searchType}
@@ -92,7 +92,7 @@ export const Pokemon = () => {
           />
         </div>
       </div>
-      <ul className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 place-content-center gap-6 m-2">
+      <ul className="pt-56 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 place-content-center gap-6 m-2">
         {ac.map((curPokemon) => {
           return (
             <>
