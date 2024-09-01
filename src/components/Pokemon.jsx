@@ -45,7 +45,7 @@ export const Pokemon = () => {
       .includes(search.toUpperCase())
   );
 
-  const ac = searchType == "name" ? searchData : searchData1;
+  const ac = searchType === "name" ? searchData : searchData1;
 
   if (loading) {
     return (
