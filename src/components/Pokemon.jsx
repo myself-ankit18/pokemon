@@ -95,9 +95,9 @@ export const Pokemon = () => {
       <ul className="pt-56 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 place-content-center gap-6 m-2">
         {ac.map((curPokemon) => {
           return (
-            <>
+            <li key={curPokemon.id}>
               <PokemonCards key={curPokemon.id} pokemonDetails={curPokemon} />
-            </>
+            </li>
           );
         })}
       </ul>
