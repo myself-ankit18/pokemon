@@ -49,7 +49,7 @@ export const Pokemon = () => {
 
   if (loading) {
     return (
-      <h1 className="font-bold text-[40px] font-mono text-center">Loading</h1>
+      <h1 className="font-bold text-[25px] sm:text-[40px] font-mono text-center my-[15rem]">Loading..Please Wait</h1>
     );
   }
   if (error) {
@@ -62,7 +62,7 @@ export const Pokemon = () => {
 
   return (
     <section className="bg-blue-100">
-      <div className="flex flex-col items-center fixed bg-blue-100 w-[100vw] shadow-lg">
+      <div className="flex flex-col items-center fixed bg-blue-100 w-[100vw] mt-[-8px] shadow-lg">
         <h1 className="font-bold text-[40px] font-mono">Pokemon Cards</h1>
         <div className="flex flex-col justify-center">
           <label htmlFor="types">Search by:</label>
